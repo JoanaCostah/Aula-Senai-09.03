@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <div id="mostrar-mensagem">
+            <button id="apareca" onclick="aparece()"> Clique aqui</button>
+            <h1 id="mns">Olá, seja bem-vindo!</h1>
+        </div>
+
+        <div id="mostrar-nome-digitado">
+            <input id="nome-usuario" type="text" placeholder="Digite seu nome">
+            <button id="aparece-nome" onclick="apareceNome()">Mostrar Nome</button>
+            <h3 id="mns2">Olá, <span id="nome"> </span>!</h3>
+
+            <div id="somar-calculadora">
+                <input type="number" placeholder="Digite um número para somar" id="number1">
+                <input type="number" placeholder="Digite um número para somar" id="number2">
+                <h3>Resultado: <span id="resultado-soma"> </span></h3>
+                <button onclick="somar()"> Clique para somar</button>
+            </div>
+
+            <div id="multiplicar-calculadora">
+                <input type="number" placeholder="Digite um número para multiplicar" id="number3">
+                <input type="number" placeholder="Digite um número para multiplicar" id="number4">
+                <h3>Resultado: <span id="resultado-multiplicacao"> </span></h3>
+                <button onclick="multiplicacao()"> Clique para multiplicar</button>
+            </div>
+
+            <div id="contador-cliques">
+                <h2>Cliques: <span id="Contador"> 0</span></h2>
+                <button onclick="maisUm()"> Clique para somar mais um </button>
+            </div>
+
+            <div id="mudar-cor">
+                <h1 id="text-mudar-cor">Aperte e eu mudarei de cor </h1>
+                <button id="button-mudar-cor" onclick="mudeiCor()"> Aperte-me</button>
+            </div>
+
+            <div id="mostrar-idade">
+                <input id="idade-usuario" type="number" placeholder="Digite sua idade">
+                <button id="aparece-idade" onclick="apareceIdade()">Mostrar Idade</button>
+                <h3 id="mns3">Você tem: <span id="idade"> </span> anos!</h3>
+            </div>
+
+
+            <div id="mudar-texto">
+                <h2 id="texto">Texto antigo</h2>
+                <button onclick="mudarTexto()"> clique para mudar o texto</button>
+            </div>
+
+            <div id="calculadora">
+                <h1>Calculadora</h1>
+                <input id="number5" class="number1" type="number" placeholder="Digite o primeiro número">
+                <input id="number6" class="number2" type="number" placeholder="Digite o segundo número">
+                <div id="Resultado">
+                    <h4>Resultado: <h4 id="resultadoo"> </h4>
+                    </h4>
+                </div>
+                <div id="bts">
+                    <button onclick="somar()">Somar</button>
+                    <button onclick="subtrair()">Subtrair</button>
+                    <button onclick="dividir()">Dividir</button>
+                    <button onclick="multiplicar()">Multiplicar</button>
+                </div>
+            </div>
+            <div></div>
+    </main>
+</body>
+
+<script>
+
+    function aparece() {
+        if (document.getElementById("mns").style.display !== "none")
+            document.getElementById("mns").style.display = "none";
+        else
+            document.getElementById("mns").style.display = "flex"
+    }
+
+    function apareceNome() {
+        if (document.getElementById("mns2").style.display !== "none")
+            document.getElementById("mns2").style.display = "none";
+        else {
+            let nome = document.getElementById("nome-usuario").value;
+            document.getElementById("nome").innerText = nome;
+            document.getElementById("mns2").style.display = "flex"
+
+
+        }
+    }
+
+    function somar() {
+        let number1 = Number(document.getElementById("number1").value)
+        let number2 = Number(document.getElementById("number2").value)
+
+        let soma = number1 + number2;
+
+        document.getElementById("resultado-soma").innerText = soma;
+    }
+
+    let cont = 0;
+    function maisUm() {
+        document.getElementById("Contador").innerText = cont++;
+    }
+
+    function mudeiCor() {
+        if (document.getElementById("text-mudar-cor").style.color !== "blue")
+            document.getElementById("text-mudar-cor").style.color = "blue";
+        else {
+            document.getElementById("text-mudar-cor").style.color = "red"
+        }
+    }
+
+    function multiplicacao() {
+        let number3 = Number(document.getElementById("number3").value)
+        let number4 = Number(document.getElementById("number4").value)
+
+        let multiplicacao = number3 * number4;
+
+        document.getElementById("resultado-multiplicacao").innerText = multiplicacao;
+    }
+
+    function apareceIdade() {
+        if (document.getElementById("mns3").style.display !== "none")
+            document.getElementById("mns3").style.display = "none";
+        else {
+            let idade = Number(document.getElementById("idade-usuario").value);
+
+            document.getElementById("idade").innerText = idade;
+            document.getElementById("mns3").style.display = "flex"
+        }
+    }
+
+
+    function mudarTexto() {
+        let textoNovo = "Texto novo";
+        document.getElementById("texto").innerText = textoNovo
+
+
+    }
+
+     function pegarValores() {
+            let n1 = Number(document.getElementById("number5").value);
+            let n2 = Number(document.getElementById("number6").value);
+
+    
+            return { n1, n2 };
+        }
+
+        function somar() {
+            let { n1, n2 } = pegarValores();
+            let soma = n1 + n2;
+
+            mostraResultado(soma);
+        }
+
+        function subtrair() {
+            let { n1, n2 } = pegarValores();
+            let subtrai = n1 - n2;
+
+            mostraResultado(subtrai);
+        }
+        function dividir() {
+            let { n1, n2 } = pegarValores();
+            let dividi = n1 + n2;
+
+            mostraResultado(dividi);
+        }
+        function multiplicar() {
+            let { n1, n2 } = pegarValores();
+            let multiplica = n1 + n2;
+
+            mostraResultado(multiplica);
+        }
+
+
+        function mostraResultado(valor) {
+            document.getElementById("resultadoo").textContent = valor;
+        }
+
+
+
+</script>
+
+</html>

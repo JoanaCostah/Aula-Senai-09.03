@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+#mns{
+display: none;
+}
+
+#mns2{
+display: none;
+}
+
+#mns3{
+display: none;
+}
